@@ -1,43 +1,43 @@
-create table Alunos
+CREATE TABLE Alunos
 (
-	 id_aluno int primary key not null,
-	 nome varchar(200) not null,
-	 data_nascimento date not null,
-	 sexo varchar(1) not null,
-	 data_cadastro datetime not null,
-	 login_cadastro varchar(15)
+	 id_aluno INT PRIMARY KEY NOT NULL,
+	 nome VARCHAR(200) NOT NULL,
+	 data_nascimento DATE NOT NULL,
+	 sexo VARCHAR(1) NOT NULL,
+	 data_cadastro DATETIME NOT NULL,
+	 login_cadastro VARCHAR(15)
 );
 
 ALTER TABLE Alunos
 	ADD CONSTRAINT fk_Turmas FOREIGN KEY (id_aluno) REFERENCES Turmas (id_turma);
 
-create table Situacao
+CREATE TABLE Situacao
 (
-	id_situacao int primary key not null,
-	situacao varchar (25) not null,
-	data_cadastro datetime,
-	login_cadastro varchar(15)
+	id_situacao INT PRIMARY KEY NOT NULL,
+	situacao VARCHAR (25) NOT NULL,
+	data_cadastro DATETIME,
+	login_cadastro VARCHAR(15)
 );
 
-create table Cursos
+CREATE TABLE Cursos
 (
-	id_curso int primary key not null,
-	nome_curso varchar(200) not null,
-	data_cadastro datetime not null,
-	login_cadastro varchar(15) not null
+	id_curso INT PRIMARY KEY NOT NULL,
+	nome_curso VARCHAR(200) NOT NULL,
+	data_cadastro DATETIME NOT NULL,
+	login_cadastro VARCHAR(15) NOT NULL
 );
 
-create table Turmas
+CREATE TABLE Turmas
 (
-	id_turma int primary key not null,
-	id_aluno int not null,
-	id_curso int not null,
-	valor_turma numeric(15,2)not null,
-	desconto numeric(3,2)not null,
-	data_inicio date not null,
-	data_termino datetime not null,
-	data_cadastro datetime not null,
-	login_cadastro varchar(15)
+	id_turma INT PRIMARY KEY NOT NULL,
+	id_aluno INT NOT NULL,
+	id_curso INT NOT NULL,
+	valor_turma NUMERIC(15,2) NOT NULL,
+	desconto NUMERIC(3,2) NOT NULL,
+	data_inicio DATE NOT NULL,
+	data_termino DATETIME NOT NULL,
+	data_cadastro DATETIME NOT NULL,
+	login_cadastro VARCHAR(15)
 );
 
 ALTER TABLE Turmas
@@ -46,14 +46,14 @@ ALTER TABLE Turmas
 ALTER TABLE Turmas
 	ADD CONSTRAINT fk_Curso FOREIGN KEY (id_curso) REFERENCES Cursos (id_curso);
 
-create table Registro_presenca
+CREATE TABLE Registro_presenca
 (
-	id_turma int not null,
-	id_aluno int not null,
-	id_situacao int not null,
-	data_presenca date not null,
-	data_cadastro date not null,
-	login_cadastro varchar(15) not null
+	id_turma INT NOT NULL,
+	id_aluno INT NOT NULL,
+	id_situacao INT NOT NULL,
+	data_presenca DATE NOT NULL,
+	data_cadastro DATE NOT NULL,
+	login_cadastro VARCHAR(15) NOT NULL
 );
 
 ALTER TABLE Registro_presenca
@@ -65,8 +65,8 @@ ALTER TABLE Registro_presenca
 ALTER TABLE Registro_presenca
 	ADD CONSTRAINT fk_SituacaoRP FOREIGN KEY (id_situacao) REFERENCES Situacao (id_situacao);
 
-DROP TABLE Alunos;
-DROP TABLE Situacao;
-DROP TABLE Cursos;
-DROP TABLE Turmas;
-DROP TABLE Registro_presenca;
+--DROP TABLE Alunos;
+--DROP TABLE Situacao;
+--DROP TABLE Cursos;
+--DROP TABLE Turmas;
+--DROP TABLE Registro_presenca;
