@@ -29,3 +29,26 @@ IF @DIA_SEMANA = 'Domingo' OR @DIA_SEMANA = 'Sábado'
 	PRINT 'Este dia é fim de semana'
 ELSE
 	PRINT 'Este dia é dia da semana'
+
+-------------------------------------------------------------------------------------
+
+	--SELECT SUM([LIMITE DE CREDITO]) FROM [TABELA DE CLIENTES] WHERE BAIRRO = 'Jardins'
+
+DECLARE @LIMITE_MAXIMO FLOAT
+DECLARE @LIMITE_ATUAL FLOAT
+DECLARE @BAIRRO VARCHAR(20)
+
+SET @BAIRRO = 'Jardins'
+SET @LIMITE_MAXIMO = 500000
+
+--SELECT @LIMITE_ATUAL = SUM([LIMITE DE CREDITO]) FROM [TABELA DE CLIENTES] WHERE BAIRRO = @BAIRRO
+
+
+IF @LIMITE_MAXIMO <= (SELECT SUM([LIMITE DE CREDITO]) FROM [TABELA DE CLIENTES] WHERE BAIRRO = @BAIRRO)
+BEGIN
+	PRINT 'Valor estourou. Não é possivel abrir novos créditos'
+END
+ELSE
+BEGIN
+	PRINT 'Valor não estourou. É possivel abrir novos créditos'
+END
