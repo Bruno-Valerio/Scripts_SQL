@@ -1,0 +1,31 @@
+IF OBJECT_ID('TABELA_TESTE', 'U') IS NOT NULL
+BEGIN
+	DROP TABLE TABELA_TESTE
+END
+CREATE TABLE TABELA_TESTE (ID VARCHAR(10))
+
+-------------------------------------------------------------------------------------
+
+IF OBJECT_ID('TABELA_TESTE', 'U') IS NOT NULL DROP TABLE TABELA_TESTE
+CREATE TABLE TABELA_TESTE (ID VARCHAR(10))
+
+-------------------------------------------------------------------------------------
+
+IF OBJECT_ID('TABELA_TESTE', 'U') IS NULL CREATE TABLE TABELA_TESTE (ID VARCHAR(10))
+
+-------------------------------------------------------------------------------------
+
+SELECT GETDATE() -- SELECIONA DIA ATUAL
+SELECT DATENAME(WEEKDAY, GETDATE()) -- NOME DO DIA ATUAL
+SELECT DATENAME(WEEKDAY, DATEADD(DAY, 4, GETDATE())) -- SOMA 4 DIAS AO DIA ATUAL
+
+DECLARE @DIA_SEMANA VARCHAR(20)
+DECLARE @NUMERO_DIAS INT
+
+SET @NUMERO_DIAS = 5
+SET @DIA_SEMANA = DATENAME(WEEKDAY, DATEADD(DAY, @NUMERO_DIAS, GETDATE()))
+PRINT @DIA_SEMANA
+IF @DIA_SEMANA = 'Domingo' OR @DIA_SEMANA = 'Sábado'
+	PRINT 'Este dia é fim de semana'
+ELSE
+	PRINT 'Este dia é dia da semana'
