@@ -32,7 +32,7 @@ ELSE
 
 -------------------------------------------------------------------------------------
 
-	--SELECT SUM([LIMITE DE CREDITO]) FROM [TABELA DE CLIENTES] WHERE BAIRRO = 'Jardins'
+--SELECT SUM([LIMITE DE CREDITO]) FROM [TABELA DE CLIENTES] WHERE BAIRRO = 'Jardins'
 
 DECLARE @LIMITE_MAXIMO FLOAT
 DECLARE @LIMITE_ATUAL FLOAT
