@@ -1,0 +1,29 @@
+---SELECT RAND()
+--- VALOR MINIMO SEJA 100
+--- VALOR MAXIMO SEJA 500
+
+SELECT ((500 - 100 -1) * RAND() + 100) ---COM CASAS DECIMAIS
+SELECT ROUND(((500 - 100 -1) * RAND() + 100), 0) ---SEM CASAS DECIMAIS
+
+----------------------------------------------------------------------------------------
+
+CREATE VIEW VW_ALEATORIO AS SELECT RAND() AS VALUE
+
+SELECT * FROM VW_ALEATORIO
+
+----------------------------------------------------------------------------------------
+
+CREATE FUNCTION NumeroAleatorio(@VAL_INIC INT, @VAL_FINAL INT) RETURNS INT
+AS
+
+BEGIN
+
+DECLARE @ALEATORIO INT
+DECLARE @ALEATORIO_FLOAT FLOAT
+SELECT @ALEATORIO_FLOAT = VALUE FROM VW_ALEATORIO
+SET @ALEATORIO = ROUND(((@VAL_FINAL - @VAL_INIC -1) * @ALEATORIO_FLOAT + @VAL_INIC), 0)
+RETURN @ALEATORIO
+
+END
+
+SELECT [dbo].[NumeroAleatorio] (100, 1000)
